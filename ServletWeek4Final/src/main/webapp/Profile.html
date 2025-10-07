@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>User Dashboard</title>
+<link rel="stylesheet" href="css/profile.css">
+<script>
+  window.onload = function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "sessioninfo", true);
+    xhr.onreadystatechange = function() {
+      if(xhr.readyState === 4 && xhr.status === 200) {
+        let username = xhr.responseText.trim();
+        document.getElementById("welcome").innerHTML = " Welcome " + username + " to your Dashboard!";
+      }
+    };
+    xhr.send();
+  };
+</script>
+</head>
+<body>
+  <div class="dashboard">
+    <h2 id="welcome">Loading...</h2>
+     <p>
+    <strong>History of Programming Languages:</strong><br><br>
+    The journey of programming languages began in the early 1950s with 
+    assembly languages and machine code. Soon after, Fortran (1957) 
+    became the first widely used high-level programming language, designed 
+    for scientific and mathematical calculations.  
+    <br><br>
+    In the 1960s, languages like COBOL (for business applications) 
+    and Lisp (for artificial intelligence research) appeared.  
+    The 1970s gave us C, which combined efficiency and flexibility 
+    and became the foundation of modern operating systems like UNIX.  
+    <br><br>
+    The 1980s introduced object-oriented programming with languages 
+    like C++, making software more modular and reusable.  
+    The 1990s broughtJava and Python, which focused on 
+    portability, simplicity, and readability.  
+    <br><br>
+    In the 2000s and beyond, modern languages such as JavaScript, 
+    C#, Go, and Rust emerged, focusing on web development, 
+    concurrency, and safety. Today, programming continues to evolve to 
+    meet the demands of cloud computing, AI, and large-scale systems.
+  </p>
+   
+  </div>
+</body>
+</html>

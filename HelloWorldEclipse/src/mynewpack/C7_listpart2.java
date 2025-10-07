@@ -73,6 +73,15 @@ public class C7_listpart2 {
 		 System.out.println(list6);
 		 
 		 
+		 List <Integer> newlist = new LinkedList<>();
+		 newlist.add(1);
+		 newlist.add(10);
+		 newlist.add(9);
+		 
+		 System.out.println(newlist);
+		 
+		 newlist.sort(null);
+		 System.out.println(newlist);
 		 
 		
 		

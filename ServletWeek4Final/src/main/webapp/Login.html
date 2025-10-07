@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="css/login.css">
+  <script>
+    // Toggle show/hide password
+    function togglePassword() {
+      let pwd = document.getElementById("password");
+      pwd.type = (pwd.type === "password") ? "text" : "password";
+    }
+
+    // Login function called on form submit
+    function loginUser(event) {
+      event.preventDefault(); // stop page reload
+
+      let email = document.getElementById("email").value.trim();
+      let password = document.getElementById("password").value.trim();
+
+      //  client-side validation
+      if(email === "" || password === "") {
+        alert(" Email and Password cannot be blank!");
+        return;
+      }
+
+      // AJAX request
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "mylogin", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+      xhr.onreadystatechange = function() {
+        if(xhr.readyState === 4 && xhr.status === 200) {
+          let response = xhr.responseText.trim();
+
+          if(response.startsWith("success:")) {
+            let username = response.split(":")[1];
+            // Redirect to profile.html after login
+            window.location.href = "Profile.html";
+          } else if(response.startsWith("fail:") || response.startsWith("error:")) {
+            alert(response.split(":")[1]);
+          }
+        }
+      };
+
+      // Send data
+      xhr.send("email=" + encodeURIComponent(email) + "&password=" + encodeURIComponent(password));
+    }
+  </script>
+  
+</head>
+<body>
+  <div class="login-box">
+    <h2>Login</h2>
+    <form onsubmit="loginUser(event)">
+      <label>Email:</label>
+      <input type="text" id="email" name="email" placeholder="Enter Email">
+
+      <label>Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter Password">
+
+      <div class="checkbox">
+        <input type="checkbox" onclick="togglePassword()"> Show Password
+      </div>
+      <input type="submit" value="Login" class="btn">
+    </form>
+  </div>
+</body>
+</html>

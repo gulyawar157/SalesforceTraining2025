@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Registration Page</title>
+<link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+
+  <div class="register-box">
+    <h1>Welcome to the Registration Page</h1>
+    <form action="registerform" method="post">  
+      
+      <label for="namer">Name:</label>
+      <input type="text" id="namer" name="namer" placeholder="Enter your full name" />
+
+      <label for="emailr">Email:</label>
+      <input type="text" id="emailr" name="emailr" placeholder="Enter your email" />
+
+      <label for="passr">Password:</label>
+      <input type="password" id="passr" name="passr" placeholder="Enter password" />
+
+      <label>Gender:</label>
+      <div class="gender-options">
+        <label><input type="radio" name="genderr" value="Male" /> Male</label>
+        <label><input type="radio" name="genderr" value="Female" /> Female</label>
+      </div>
+
+      <label for="cityr">City:</label>
+      <select id="cityr" name="cityr">
+        <option>Select City</option>
+        <option>Gurugram</option>
+        <option>Bengaluru</option>
+        <option>Hyderabad</option>
+        <option>Pune</option>
+        <option>Chennai</option>
+      </select>
+
+      <input type="submit" value="Register" class="btn"/>
+    </form>
+  </div>
+
+</body>
+</html>
